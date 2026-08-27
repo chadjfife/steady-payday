@@ -1,6 +1,6 @@
 # Steady Payday
 
-Public trust and discovery site for the Shift Pay & Bill Planner.
+**Pa...[truncated]
 
 ## Current public scope
 
