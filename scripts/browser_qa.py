@@ -27,13 +27,13 @@ def evaluate(cdp, expression):
     result = cdp.call("Runtime.evaluate", {"expression": expression, "returnByValue": True, "awaitPromise": True})
     return result["result"].get("value")
 
-def audit(name, width, height, mobile):
+def audit(name, width, height, mobile, path="/"):
     target = requests.put("http://127.0.0.1:9222/json/new?" + quote("about:blank", safe="")).json()
     cdp = CDP(target["webSocketDebuggerUrl"])
     cdp.call("Page.enable")
     cdp.call("Runtime.enable")
     cdp.call("Emulation.setDeviceMetricsOverride", {"width": width, "height": height, "deviceScaleFactor": 1, "mobile": mobile})
-    cdp.call("Page.navigate", {"url": BASE + "/"})
+    cdp.call("Page.navigate", {"url": BASE + path})
     deadline = time.time() + 20
     while time.time() < deadline:
         if evaluate(cdp, "document.readyState") == "complete": break
@@ -52,6 +52,7 @@ def audit(name, width, height, mobile):
         "broken_images": evaluate(cdp, "Array.from(document.images).filter(i=>!i.complete||!i.naturalWidth).map(i=>i.src)"),
         "empty_links": evaluate(cdp, "Array.from(document.querySelectorAll('a')).filter(a=>!a.getAttribute('href')||a.getAttribute('href')==='#').length"),
         "download_exists": requests.get(BASE + "/downloads/free-payday-bill-map.pdf", timeout=10).status_code == 200,
+        "route_exists": requests.get(BASE + path, timeout=10).status_code == 200,
         "content_height": content["height"],
     }
     shot = cdp.call("Page.captureScreenshot", {"format": "png", "captureBeyondViewport": True, "fromSurface": True})
@@ -61,7 +62,8 @@ def audit(name, width, height, mobile):
     assert not data["broken_images"], data
     assert data["empty_links"] == 0, data
     assert data["download_exists"], data
+    assert data["route_exists"] and data["title"] != "Error response", data
     print(json.dumps(data, indent=2))
 
-for args in [("desktop-1440",1440,1000,False),("mobile-390",390,844,True),("mobile-320",320,760,True)]:
+for args in [("desktop-1440",1440,1000,False),("mobile-390",390,844,True),("mobile-320",320,760,True),("reset-pack-desktop",1440,1000,False,"/payday-reset-pack.html"),("reset-pack-mobile",390,844,True,"/payday-reset-pack.html")]:
     audit(*args)
