@@ -1,4 +1,4 @@
-import base64, json, time
+import base64, json, os, time
 from pathlib import Path
 from urllib.parse import quote
 import requests, websocket
@@ -6,6 +6,7 @@ import requests, websocket
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "qa"
 OUT.mkdir(exist_ok=True)
+BASE = os.environ.get("QA_URL", "http://127.0.0.1:4173").rstrip("/")
 
 class CDP:
     def __init__(self, ws_url):
@@ -32,7 +33,7 @@ def audit(name, width, height, mobile):
     cdp.call("Page.enable")
     cdp.call("Runtime.enable")
     cdp.call("Emulation.setDeviceMetricsOverride", {"width": width, "height": height, "deviceScaleFactor": 1, "mobile": mobile})
-    cdp.call("Page.navigate", {"url": "http://127.0.0.1:4173/"})
+    cdp.call("Page.navigate", {"url": BASE + "/"})
     deadline = time.time() + 20
     while time.time() < deadline:
         if evaluate(cdp, "document.readyState") == "complete": break
@@ -50,7 +51,7 @@ def audit(name, width, height, mobile):
         "client_width": evaluate(cdp, "document.documentElement.clientWidth"),
         "broken_images": evaluate(cdp, "Array.from(document.images).filter(i=>!i.complete||!i.naturalWidth).map(i=>i.src)"),
         "empty_links": evaluate(cdp, "Array.from(document.querySelectorAll('a')).filter(a=>!a.getAttribute('href')||a.getAttribute('href')==='#').length"),
-        "download_exists": requests.get("http://127.0.0.1:4173/downloads/free-payday-bill-map.pdf", timeout=10).status_code == 200,
+        "download_exists": requests.get(BASE + "/downloads/free-payday-bill-map.pdf", timeout=10).status_code == 200,
         "content_height": content["height"],
     }
     shot = cdp.call("Page.captureScreenshot", {"format": "png", "captureBeyondViewport": True, "fromSurface": True})
