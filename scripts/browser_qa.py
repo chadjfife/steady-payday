@@ -65,5 +65,5 @@ def audit(name, width, height, mobile, path="/"):
     assert data["route_exists"] and data["title"] != "Error response", data
     print(json.dumps(data, indent=2))
 
-for args in [("desktop-1440",1440,1000,False),("mobile-390",390,844,True),("mobile-320",320,760,True),("reset-pack-desktop",1440,1000,False,"/payday-reset-pack.html"),("reset-pack-mobile",390,844,True,"/payday-reset-pack.html")]:
+for args in [("desktop-1440",1440,1000,False),("mobile-390",390,844,True),("mobile-320",320,760,True),("reset-pack-desktop",1440,1000,False,"/payday-reset-pack.html"),("reset-pack-mobile-390",390,844,True,"/payday-reset-pack.html"),("reset-pack-mobile-320",320,760,True,"/payday-reset-pack.html"),("bill-calendar-desktop",1440,1000,False,"/biweekly-paycheck-bill-calendar.html"),("bill-calendar-mobile-390",390,844,True,"/biweekly-paycheck-bill-calendar.html"),("bill-calendar-mobile-320",320,760,True,"/biweekly-paycheck-bill-calendar.html")]:
     audit(*args)

@@ -6,8 +6,9 @@
 
 - Real straight-on workbook previews
 - A free one-page Payday Bill Map PDF
-- Truthful product boundaries and prelaunch status
-- No account, checkout, email form, advertising, or personal-data collection
+- A free biweekly paycheck bill-calendar guide
+- A live $3 Payday Reset Pack checkout on Gumroad
+- Truthful product boundaries with no email form, advertising, or personal-data collection on the companion site
 
 The paid workbook is not included in this repository.
 
@@ -33,4 +34,4 @@ python scripts/create_payday_map.py
 
 ## Commercial and legal status
 
-The site is informational until a legitimate zero-upfront-cost checkout, payout path, and support/refund policy are verified. Product planning estimates are not payroll, tax, legal, or financial advice.
+The $3 Payday Reset Pack is live on a verified Gumroad checkout. The Shift Pay & Bill Planner workbook remains a preview and is not sold from this repository. Product planning estimates are not payroll, tax, legal, or financial advice.

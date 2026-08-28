@@ -84,6 +84,44 @@ footer{background:var(--ink);color:#e9e5dd;display:flex;justify-content:space-be
 footer strong{font-family:"Noto Serif Display",serif;font-size:1.25rem;color:#fff}
 footer p{max-width:52ch;margin:.4rem 0}
 .site-footer .brand{color:#fff}.site-footer .brand span{color:#f3cabc}
+.resource-article{background:var(--paper)}
+.resource-hero{max-width:1320px;margin:0 auto;padding:clamp(4rem,8vw,8rem) clamp(1rem,6vw,7rem);display:grid;grid-template-columns:minmax(0,1.15fr) minmax(300px,.65fr);gap:clamp(3rem,8vw,8rem);align-items:center}
+.resource-hero h1{font-size:clamp(3rem,6.3vw,6.4rem);max-width:11ch}
+.resource-hero>div>p:not(.eyebrow,.quiet-note){max-width:64ch}
+.resource-preview{margin:0;max-width:430px;justify-self:end}
+.resource-preview img{border:1px solid var(--oat);box-shadow:var(--shadow)}
+.resource-section{max-width:980px;margin:0 auto;padding:clamp(4.5rem,8vw,7rem) clamp(1rem,4vw,3rem)}
+.resource-section h2,.worked-example h2,.resource-cta h2{font-size:clamp(2.2rem,4.5vw,4.2rem)}
+.resource-section>p:not(.eyebrow),.worked-example>div>p:not(.eyebrow){font-size:1.08rem;max-width:70ch}
+.resource-intro{border-top:1px solid var(--oat)}
+.comparison-grid{display:grid;grid-template-columns:1fr 1fr;margin:2.5rem 0;border-block:1px solid var(--oat)}
+.comparison-grid>div{padding:2rem 2rem 2rem 0}
+.comparison-grid>div+div{border-left:1px solid var(--oat);padding-left:2rem}
+.comparison-grid h3{margin:.2rem 0 .7rem}.comparison-grid p{margin:0}
+.steps-section{max-width:1120px}
+.method-steps{list-style:none;padding:0;margin:3.5rem 0 0;display:grid;gap:0;border-top:1px solid var(--oat)}
+.method-steps li{display:grid;grid-template-columns:4.5rem 1fr;gap:1.5rem;padding:2.2rem 0;border-bottom:1px solid var(--oat)}
+.step-number{font:400 2.8rem/1 "Noto Serif Display",serif;color:var(--clay)}
+.method-steps h3{font-size:1.3rem;margin:0 0 .55rem}.method-steps p{margin:0;max-width:74ch}
+.worked-example{background:var(--forest);color:var(--warm-white);padding:clamp(4.5rem,8vw,7rem) max(clamp(1rem,6vw,7rem),calc((100vw - 1180px)/2));}
+.worked-example h2,.worked-example h3{color:#fff7ed}
+.payday-lanes{display:grid;grid-template-columns:1fr 1fr;margin-top:3rem;border:1px solid rgba(255,255,255,.3)}
+.payday-lanes section{padding:2rem}.payday-lanes section+section{border-left:1px solid rgba(255,255,255,.3)}
+.payday-lanes h3{margin-top:0}.payday-lanes ul{list-style:none;padding:0;margin:0}
+.payday-lanes li{display:flex;justify-content:space-between;gap:1rem;padding:.85rem 0;border-top:1px solid rgba(255,255,255,.18)}
+.payday-lanes strong{font-size:.82rem;color:#dce8dc;text-align:right}
+.example-note{font-size:.85rem;color:#dce8dc;margin-top:1.2rem}
+.callout{border-left:4px solid var(--clay);background:var(--warm-white);padding:1.25rem 1.4rem;margin-top:2rem}
+.plain-checklist{list-style:none;padding:0;margin:2rem 0;border-top:1px solid var(--oat)}
+.plain-checklist li{padding:1rem 0;border-bottom:1px solid var(--oat)}
+.faq details{border-bottom:1px solid var(--oat);padding:1rem 0}.faq details:first-of-type{border-top:1px solid var(--oat);margin-top:2.5rem}
+.faq summary{cursor:pointer;color:var(--forest);font-weight:700;padding:.5rem 2rem .5rem 0}.faq details p{max-width:68ch}
+.resource-cta{background:#e9dfd0;padding:clamp(4.5rem,8vw,7rem) max(clamp(1rem,6vw,7rem),calc((100vw - 1180px)/2));}
+.tool-options{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3rem}
+.tool-options article{background:var(--warm-white);padding:clamp(1.5rem,4vw,2.5rem);border:1px solid var(--oat)}
+.tool-options h3{font:500 1.8rem/1.1 "Noto Serif Display",serif;margin:.4rem 0 1rem}
+.option-label{font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;color:var(--clay);font-weight:700}
+.secondary{border:1px solid var(--forest);color:var(--forest);background:transparent}
 @media (max-width:900px){
   nav a:not(.nav-download){display:none}
   .hero{grid-template-columns:1fr;padding-top:4rem}
@@ -99,6 +137,7 @@ footer p{max-width:52ch;margin:.4rem 0}
   .product-hero,.product-proof,.feature-proof{grid-template-columns:1fr}
   .product-hero{padding-top:4rem}.feature-proof.reverse>div,.feature-proof.reverse>img{order:initial}
   .fit-columns>div+div{border-left:0;border-top:1px solid var(--oat);padding-left:0}
+  .resource-hero{grid-template-columns:1fr}.resource-preview{justify-self:start;max-width:380px}
 }
 @media (max-width:520px){
   .site-header{min-height:68px}
@@ -116,5 +155,11 @@ footer p{max-width:52ch;margin:.4rem 0}
   .fit-columns article{padding-right:0}
   .fit-columns>div{padding-right:0}
   footer{flex-direction:column}
+  .resource-hero{padding-inline:1.1rem}.resource-hero h1{font-size:clamp(2.75rem,14vw,4rem)}
+  .resource-section{padding-inline:1.1rem}.comparison-grid,.payday-lanes,.tool-options{grid-template-columns:1fr}
+  .comparison-grid>div+div,.payday-lanes section+section{border-left:0;border-top:1px solid var(--oat);padding-left:0}
+  .payday-lanes section+section{padding-left:2rem}.method-steps li{grid-template-columns:2.5rem 1fr;gap:.75rem}
+  .step-number{font-size:2rem}.payday-lanes li{align-items:flex-start;flex-direction:column;gap:.2rem}.payday-lanes strong{text-align:left}
+  .worked-example,.resource-cta{padding-inline:1.1rem}
 }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.button{transition:none}.button:hover{transform:none}}
