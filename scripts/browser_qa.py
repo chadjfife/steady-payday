@@ -32,6 +32,8 @@ def audit(name, width, height, mobile, path="/"):
     cdp = CDP(target["webSocketDebuggerUrl"])
     cdp.call("Page.enable")
     cdp.call("Runtime.enable")
+    cdp.call("Network.enable")
+    cdp.call("Network.setCacheDisabled", {"cacheDisabled": True})
     cdp.call("Emulation.setDeviceMetricsOverride", {"width": width, "height": height, "deviceScaleFactor": 1, "mobile": mobile})
     cdp.call("Page.navigate", {"url": BASE + path})
     deadline = time.time() + 20
